@@ -1,0 +1,64 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "form-horizontal") do |f| %>
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <h2>Please Login</h2>
+      <hr>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-sm-6">
+
+      <div class="form-group">
+        <%= f.label :email, class: "sr-only" %>
+      </div>
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+        <%= f.email_field :email, class: "form-control", autofocus: true, placeholder: "you@example.com" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-sm-6">
+
+      <%= f.label :password, class: "sr-only" %><br />
+      <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+        <%= f.password_field :password, class: "form-control", autocomplete: "off", placeholder: "Password" %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <% if devise_mapping.rememberable? -%>
+      <div class="col-md-3"></div>
+      <div class="col-md-6" style="padding-top: .35rem">
+        <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+          <%= f.label :remember_me, class: "form-check-label" do %>
+            <%= f.check_box :remember_me, class: "form-check-input" %>
+            <span style="padding-bottom: .15rem">Remember me</span>
+          <% end %>
+        </div>
+      </div>
+    <% end -%>
+  </div>
+
+  <div class="row" style="padding-top: 1rem">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= f.submit "Log in" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+<% end %>
+
