@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number of persons:</strong>
+  <%= @meeting_room.number_of_persons %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @meeting_room.name %>
+</p>
+
+<%= link_to 'Edit', edit_meeting_room_path(@meeting_room) %> |
+<%= link_to 'Back', meeting_rooms_path %>
