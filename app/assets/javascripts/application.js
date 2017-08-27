@@ -9,7 +9,8 @@
 
 $( document ).on('turbolinks:load', function() {
   $(".datepicker").datetimepicker({
-    viewMode: "years",
+    sideBySide: true,
+    format: "DD-MM-YYYY HH:mm",
     icons: {
       time: "fa fa-clock-o",
       date: "fa fa-calendar",
