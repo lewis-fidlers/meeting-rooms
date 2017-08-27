@@ -6,6 +6,12 @@
 //= require moment
 //= require bootstrap-datepicker
 //= require bootstrap-datetimepicker
+//= require select2
+//
+// -----Custom-----
+//= require meeting-room-app
+//= require meetings
+//
 
 $( document ).on('turbolinks:load', function() {
   $(".datepicker").datetimepicker({
@@ -18,4 +24,6 @@ $( document ).on('turbolinks:load', function() {
       down: "fa fa-arrow-down"
     }
   });
+
+  MeetingRoomApp.initMeetingRoomSelect2();
 });

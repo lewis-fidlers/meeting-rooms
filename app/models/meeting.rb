@@ -4,6 +4,10 @@ class Meeting < ApplicationRecord
 
   validate :end_time_after_start_time!
 
+  scope :available, -> (from = Date.today, to = Date.tomorrow) {
+    MeetingRoom.all
+  }
+
   def end_time_after_start_time!
     if end_time < start_time
       errors.add(:end_time, "Me must be after start time")

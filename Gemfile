@@ -38,6 +38,7 @@ gem 'font-awesome-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'bootstrap3-datetimepicker-rails'
+gem "select2-rails"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

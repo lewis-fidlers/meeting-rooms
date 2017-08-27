@@ -9,7 +9,7 @@
 
   <div class="form-group">
     <%= form.label :meeting_room_id %>
-    <%= form.select(:meeting_room_id, MeetingRoom.all.collect { |mr| [mr.name, mr.id] }, {}, { id: :meeting_meeting_room_id, class: "form-control" })  %>
+    <%= form.select(:meeting_room_id, MeetingRoom.all.collect { |mr| [mr.name, mr.id] }, {}, { id: :meeting_meeting_room_id, class: "form-control select2" })  %>
   </div>
 
   <div class="form-group">
