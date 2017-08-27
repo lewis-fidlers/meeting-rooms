@@ -35,7 +35,9 @@ gem "devise"
 
 gem 'bootstrap', '~> 4.0.0.beta'
 gem 'font-awesome-rails'
+gem 'momentjs-rails'
 gem 'bootstrap-datepicker-rails'
+gem 'bootstrap3-datetimepicker-rails'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
