@@ -13,5 +13,4 @@ MeetingRoomApp.drawMeetings = (dom_id, meetings) ->
   )
 
 drawMeeting = (dom_id, meeting) ->
-  $("##{dom_id} [data-meeting-hour='#{meeting.start_hour}']").css("background-color", "#ccc")
-  $("##{dom_id} [data-meeting-hour='#{meeting.end_hour}']").css("background-color", "#ccc")
+  $("##{dom_id} [data-meeting-hour='#{i}']").css("background-color", "#ccc") for i in [meeting.start_hour..meeting.end_hour]
