@@ -1,6 +1,12 @@
-<tr>
-  <td><%= room.name %></td>
-  <% 24.times do |c| %>
-    <td><%= c %></td>
-  <% end %>
-</tr>
+<div class="row">
+  <div class="col-sm-4 col-md-4 col-lg-4"><%= room.name %></div>
+  <div class="col">0</div>
+</div>
+<% (1..23).each_with_index do |c| %>
+  <div class="row">
+    <div class="col-sm-4 col-md-4 col-lg-4"></div>
+    <div class="col <%= "#{room}-#{c}-hour" %>">
+      <%= c %>
+    </div>
+  </div>
+<% end %>

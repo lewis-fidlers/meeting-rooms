@@ -26,11 +26,16 @@
   </tbody>
 </table>
 
-<table class="table">
-  <% @meeting_rooms.each do |meeting_room| %>
-    <%= render "room_day", day: DateTime.now, room: meeting_room %>
-  <% end %>
-</table>
+<div class="container">
+    <div class="row">
+      <% @meeting_rooms.each do |meeting_room| %>
+        <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
+          <%= render "room_day", day: DateTime.now, room: meeting_room %>
+        </div>
+      <% end %>
+    </div>
+</div>
+
 <br>
 
 <%= link_to 'New Meeting', new_meeting_path %>
