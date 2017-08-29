@@ -1,10 +1,15 @@
-@import "font-awesome";
-@import "bootstrap";
 @import "bootstrap-datepicker";
 @import "bootstrap-datetimepicker";
 @import "select2";
 @import "select2-bootstrap";
 
+@import "font-awesome";
+@import "bootstrap";
+
 .alert {
   margin: 5px;
+}
+
+.content-wrapper {
+  margin-top: 15px;
 }

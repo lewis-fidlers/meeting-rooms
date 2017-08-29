@@ -1,6 +1,6 @@
 <h1>Meetings</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>User</th>
@@ -26,6 +26,11 @@
   </tbody>
 </table>
 
+<table class="table">
+  <% @meeting_rooms.each do |meeting_room| %>
+    <%= render "room_day", day: DateTime.now, room: meeting_room %>
+  <% end %>
+</table>
 <br>
 
 <%= link_to 'New Meeting', new_meeting_path %>
