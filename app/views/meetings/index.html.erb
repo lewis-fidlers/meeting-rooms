@@ -29,9 +29,23 @@
 <div class="container">
     <div class="row">
       <% @meeting_rooms.each do |meeting_room| %>
-        <div class="col col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <div id="<%= dom_id(meeting_room) %>" class="col col-xs-4 col-sm-4 col-md-4 col-lg-4 meeting-day-detail">
           <%= render "room_day", day: DateTime.now, room: meeting_room %>
         </div>
+<% Rails.logger.info(dom_id(meeting_room)) %>
+        <script type="text/javascript">
+          <%
+            meetings = meeting_room.meetings.collect do |m|
+              { start_hour: m.start_time.hour,
+                start_min: m.start_time.min,
+                end_hour: m.end_time.hour,
+                end_min: m.end_time.min }
+            end
+          %>
+          var meetings = <%= meetings.to_json.html_safe %>
+          MeetingRoomApp.drawMeetings('<%= dom_id(meeting_room) %>', meetings)
+        </script>
+
       <% end %>
     </div>
 </div>
@@ -39,3 +53,4 @@
 <br>
 
 <%= link_to 'New Meeting', new_meeting_path %>
+
