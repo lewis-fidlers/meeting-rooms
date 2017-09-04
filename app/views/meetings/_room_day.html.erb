@@ -6,7 +6,7 @@
   <div class="col meeting-col" data-meeting-hour='0'></div>
 </div>
 
-<% (1..23).each_with_index do |c| %>
+<% (1..24).each_with_index do |c| %>
   <div class="row">
     <div class="col-sm-4 col-md-4 col-lg-4"></div>
     <div class="col col-sm-1 col-md-1 col-lg-1 hour-col">
@@ -15,7 +15,4 @@
     <div class="col meeting-col" data-meeting-hour='<%= c %>'>
     </div>
   </div>
-<% end %>
-<% room.meetings.each do |meeting| %>
-  <%= draw_meeting_grid(meeting) %>
 <% end %>

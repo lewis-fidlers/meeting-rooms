@@ -9,8 +9,8 @@ MeetingRoomApp.initMeetingRoomSelect2 = () ->
 
 MeetingRoomApp.drawMeetings = (dom_id, meetings) ->
   meetings.map((meeting) ->
-    drawMeeting(dom_id, meeting)
+    MeetingRoomApp.drawMeeting(dom_id, meeting)
   )
 
-drawMeeting = (dom_id, meeting) ->
-  $("##{dom_id} [data-meeting-hour='#{i}']").css("background-color", "#ccc") for i in [meeting.start_hour..meeting.end_hour]
+MeetingRoomApp.drawMeeting = (dom_id, meeting) ->
+  $("##{dom_id} [data-meeting-hour='#{i}']").css("background-color", "#e8382c") for i in [meeting.start_hour..meeting.end_hour]

@@ -4,6 +4,7 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
+    @meeting = Meeting.new
     @meetings = Meeting.all
     @meeting_rooms = MeetingRoom.all
   end
@@ -30,8 +31,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
-        format.json { render :show, status: :created, location: @meeting }
+        format.js { render :show, status: :created, location: @meeting }
       else
         format.html { render :new }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }

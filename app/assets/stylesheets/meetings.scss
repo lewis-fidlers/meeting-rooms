@@ -2,9 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.meeting-day-detail {
-  border: 1px solid #ccc;
+.container .meeting-room-overview {
+  margin-top: 4em;
+}
+.hour-col {
+  bottom: 13px;
+  right: 5px;
 }
 
+.meeting-col {
+  border-top: 1px solid #B3A7A7 ;
+
+}
 
 // attr(data-hour)

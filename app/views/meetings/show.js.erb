@@ -1,0 +1,10 @@
+<%
+    meeting = {
+      start_hour: @meeting.start_time.hour,
+      start_min: @meeting.start_time.min,
+      end_hour: @meeting.end_time.hour,
+      end_min: @meeting.end_time.min
+    }
+%>
+var meeting = <%= meeting.to_json.html_safe %>;
+MeetingRoomApp.drawMeeting("<%= dom_id(@meeting.meeting_room) %>", meeting);

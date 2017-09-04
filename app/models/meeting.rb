@@ -6,6 +6,10 @@ class Meeting < ApplicationRecord
   validate :end_time_after_start_time!
   validate :meeting_room_available!
 
+  scope :for_day, -> (date = Date.today) do
+    where("start_time BETWEEN ? AND ?", date.to_date.beginning_of_day, date.to_date.end_of_day)
+  end
+
   def meeting_room_available!
     return unless start_time && end_time
     if !meeting_room.available?(start_time, end_time)
