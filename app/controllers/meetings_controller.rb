@@ -33,8 +33,7 @@ class MeetingsController < ApplicationController
       if @meeting.save
         format.js { render :show, status: :created, location: @meeting }
       else
-        format.html { render :new }
-        format.json { render json: @meeting.errors, status: :unprocessable_entity }
+        format.js { render :show, status: :unprocessable_entity }
       end
     end
   end

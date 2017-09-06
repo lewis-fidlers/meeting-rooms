@@ -1,3 +1,5 @@
+$(".flashes").html("<%= error_list(@meeting).html_safe %>");
+
 <%
     meeting = {
       start_hour: @meeting.start_time.hour,

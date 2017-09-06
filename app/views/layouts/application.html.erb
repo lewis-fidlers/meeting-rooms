@@ -15,13 +15,15 @@
 
     <div class="container content-wrapper">
 
-      <% if notice %>
-        <p class="alert alert-info" role="alert"><%= notice %></p>
-      <% end %>
+      <div class="flashes">
+        <% if notice %>
+          <p class="alert alert-info" role="alert"><%= notice %></p>
+        <% end %>
 
-      <% if alert %>
-        <p class="alert alert-warning" role= "alert"><%= alert %></p>
-      <% end %>
+        <% if alert %>
+          <p class="alert alert-warning" role= "alert"><%= alert %></p>
+        <% end %>
+      </div>
 
       <%= yield %>
     </div>
