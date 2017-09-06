@@ -4,9 +4,10 @@ class MeetingsController < ApplicationController
   # GET /meetings
   # GET /meetings.json
   def index
-    @meeting = Meeting.new
-    @meetings = Meeting.all
     @meeting_rooms = MeetingRoom.all
+    @meeting = Meeting.new
+
+    @date = params[:date] || Date.today.to_s
   end
 
   # GET /meetings/1
@@ -31,6 +32,7 @@ class MeetingsController < ApplicationController
 
     respond_to do |format|
       if @meeting.save
+        flash[:notice] = "Succesfully create a new event."
         format.js { render :show, status: :created, location: @meeting }
       else
         format.js { render :show, status: :unprocessable_entity }

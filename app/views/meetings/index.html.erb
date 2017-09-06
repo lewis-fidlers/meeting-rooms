@@ -1,65 +1,42 @@
+<% date = Date.parse(@date) %>
+
 <h1>Meetings</h1>
-<h2><%= l(Date.today) %></h2>
+<h2><%= l(date) %></h2>
 <div class="container meeting-room-overview">
     <div class="row">
       <% @meeting_rooms.each do |meeting_room| %>
         <div id="<%= dom_id(meeting_room) %>" class="col col-xs-4 col-sm-4 col-md-4 col-lg-4 meeting-day-detail">
-          <%= render "room_day", day: DateTime.now, room: meeting_room %>
+          <%= render "room_day", day: date, room: meeting_room %>
         </div>
-        <script type="text/javascript">
-          <%
-            meetings = meeting_room.meetings.for_day(Date.today).collect do |m|
-              { start_hour: m.start_time.hour,
-                start_min: m.start_time.min,
-                end_hour: m.end_time.hour,
-                end_min: m.end_time.min }
-            end
-          %>
-          var meetings = <%= meetings.to_json.html_safe %>
-          MeetingRoomApp.drawMeetings('<%= dom_id(meeting_room) %>', meetings)
-        </script>
-
       <% end %>
     </div>
 </div>
 
+<div class="row">
+  <div class="col">
+    <%= link_to((date - 1.days).to_s, meetings_path(date: date - 1.days)) %>
+  </div>
+  <div class="col text-right">
+    <%= link_to((date + 1.days).to_s, meetings_path(date: date + 1.days)) %>
+  </div>
+</div>
+
 <br>
 
-<%= form_with(model: @meeting) do |form| %>
-  <% if @meeting.errors.any? %>
-    <div id="error_explanation">
-      <% @meeting.errors.full_messages.each do |message| %>
-        <p class="alert alert-danger" role= "alert"><%= message %></p>
-      <% end %>
-    </div>
-  <% end %>
+<%= render partial: "remote_form" %>
 
-  <div class="form-group">
-    <%= form.label :meeting_room_id %>
-    <%= form.select(:meeting_room_id, MeetingRoom.all.collect { |mr| [mr.name, mr.id] }, {}, { id: :meeting_meeting_room_id, class: "form-control select2" })  %>
-  </div>
+<% @meeting_rooms.each do |meeting_room| %>
+  <script type="text/javascript">
+    <% meetings = meeting_room.meetings.for_day(date).collect do |m|
+        { start_hour: m.start_time.hour,
+          start_min: m.start_time.min,
+          end_hour: m.end_time.hour,
+          end_min: m.end_time.min,
+          date: m.start_time.to_date}
+        end
+      %>
 
-  <div class="form-group">
-    <%= form.label :start_time %>
-    <div class='input-group date datepicker'>
-      <%= form.text_field :start_time, id: :meeting_start_time, class: "form-control"  %>
-      <div class="input-group-addon" style="width: 2.6rem">
-        <i class="fa fa-calendar"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :end_time %>
-    <div class='input-group date datepicker'>
-      <%= form.text_field :end_time, id: :meeting_end_time, class: "form-control" %>
-      <div class="input-group-addon" style="width: 2.6rem">
-        <i class="fa fa-calendar"></i>
-      </div>
-    </div>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "save", class: "btn btn-primary" %>
-  </div>
+    var meetings = <%= meetings.to_json.html_safe %>
+    MeetingRoomApp.drawMeetings('<%= dom_id(meeting_room) %>', meetings)
+  </script>
 <% end %>

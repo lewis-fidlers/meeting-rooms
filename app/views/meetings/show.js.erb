@@ -1,12 +1,19 @@
+$(".flashes").html("");
 $(".flashes").html("<%= error_list(@meeting).html_safe %>");
 
+<% if flash[:notice] %>
+  $(".flashes").html("<p class='alert alert-info' role='alert'><%= flash[:notice] %></p>");
+<% end %>
+
 <%
-    meeting = {
-      start_hour: @meeting.start_time.hour,
-      start_min: @meeting.start_time.min,
-      end_hour: @meeting.end_time.hour,
-      end_min: @meeting.end_time.min
-    }
+  meeting = {
+    start_hour: @meeting.start_time.hour,
+    start_min: @meeting.start_time.min,
+    end_hour: @meeting.end_time.hour,
+    end_min: @meeting.end_time.min,
+    date: @meeting.start_time.to_date
+  }
 %>
+
 var meeting = <%= meeting.to_json.html_safe %>;
-MeetingRoomApp.drawMeeting("<%= dom_id(@meeting.meeting_room) %>", meeting);
+MeetingRoomApp.drawMeeting("<%= dom_id(@meeting.meeting_room) %>", meeting, meeting.date);
