@@ -32,7 +32,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 gem "devise"
-gem "google-api-client"
+gem "google-api-client", "~> 0.8.6"
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'bootstrap', '~> 4.0.0.beta'

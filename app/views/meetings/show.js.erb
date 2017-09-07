@@ -15,5 +15,7 @@ $(".flashes").html("<%= error_list(@meeting).html_safe %>");
   }
 %>
 
-var meeting = <%= meeting.to_json.html_safe %>;
-MeetingRoomApp.drawMeeting("<%= dom_id(@meeting.meeting_room) %>", meeting, meeting.date);
+<% unless @meeting.errors.any? %>
+  var meeting = <%= meeting.to_json.html_safe %>;
+  MeetingRoomApp.drawMeeting("<%= dom_id(@meeting.meeting_room) %>", meeting, meeting.date);
+<% end %>
